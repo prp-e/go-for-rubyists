@@ -12,3 +12,6 @@
     * [Go environment](chapter02.md#go-environment)
     * [Hello World](chapter02.md#hello-world)
     * [What's next?](chapter02.md#whats-next)
+* [Chapter 3 : Flashback to Ruby](chapter03.md)
+    * [Let's cut our Rubies!](chapter03.md#lets-cut-our-rubies)
+    * [What's next?](chapter03.md#whats-next)
