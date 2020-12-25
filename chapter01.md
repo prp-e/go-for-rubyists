@@ -74,3 +74,5 @@ So, I think I told you everything about Go and its advantages, right? But in thi
 And if you still look for more to know, I highly suggest reading [this](https://builtin.com/software-engineering-perspectives/golang-advantages) article. 
 
 ## What's next?
+
+In the next chapter, we're going to install Go, and take a look at the differences between installation of Go and Ruby, and we also try to set up a development environment. It won't be a long chapter, but I recommend reading that to not miss my jokes! 
