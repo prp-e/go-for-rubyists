@@ -9,3 +9,15 @@ Personally, looked for a way to write a whole new operating system in Go. In [th
 Everything was fine, until I watched [this video](https://www.youtube.com/watch?v=8fi7uSYlOdc). I don't know are you like me or not, but if you're like me, you obviously like to make everything yourself. I always wanted to understand how docker, lxc or any other containerization system works. I personally thought _there's no better way than implementing one myself!_ and of course this idea always worked. For example, I made an operating system kernel when I was 21, just to understand how it works. Or even earlier in my teenage years, I was almost 16, I made an Ubuntu based linux distribution just to understand how Linux distributions are made and how they work. When I watched the video, I realized how cool is Docker, and also, how cool is Go! It was almost a year ago. And then, I had first sparks in my head for seriously learning Go!
 
 Fine, I told you a story just in four paragraphs, and I'm not going to continue, because this is not a work of fiction. This book is going to help you guys migrate from Ruby to Go. So, the rest of the chapter, although it's going to be storytelling, I try to keep it as technical as I can.
+
+## Smoking kills, so does the trend!
+
+It is really good to know that smoking kills. For the love of God, everytime you buy a packet of cigarettes, it's printed in a bold font on the packet! But do you know what also kills? the trend. Let me give you an example. K-POP music (which is short for Korean pop) existed for a long time, but in the past few years, it became _a trend_. So, when you criticize the music or the taste of the fans, you're somehow a Nazi to eyes of the others. 
+
+So why do I tell you this? Let's just take a deep look at the community I'm coming from. I come from Iran. In Iran, for a long long time, _PHP_ was the best! Why? probably because most of the internet was written in PHP back then, facebook used it and there was a lot of resources to learn the language. So, why not? I don't know it was 2004 or 2005, but [Blogfa](http://blogfa.com) became a trendy Iranian blogging service. It was written in _C#_ and _ASP_. This was enough for people to just make a new trend. For years, you couldn't find a job without knowing _C#_. It wasn't good, at least to me. 
+
+Around 2011, Python became trendy here. I know python existed long before. But in 2011, I witnessed some organizations, companies and startups here used Python to create their apps, backends, etc. At least it was something good. For finding a job, you could learn python and django and then you could print money. 
+
+After a few years, when _Go_ became the trend of the world, most of those companies who used _PHP_, did a refactor to _Go_. Now, a new age has been started. You really _need_ to learn Go when this happens. Why? because Go is a new language. It has a lot of potentials to become the next _PHP_ and this means we'll have a web written in Go in a few years. 
+
+Although what I told you in the previous section, wasn't the whole story and it's not the most accurate story about trends, but it gives you the idea about how trends can be killer, too!
