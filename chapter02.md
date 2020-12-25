@@ -166,3 +166,5 @@ Hello World!
 Yes, we ran our very first code written in Go! 
 
 ## What's next? 
+
+In the next chapter, we just try to take a look at our knowledge of Ruby programming language. We just do a quick review on Ruby and in future chapters of this book, we're going to re-learn everything we knew from Ruby, but this time in Go!
