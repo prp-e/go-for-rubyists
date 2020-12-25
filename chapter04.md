@@ -30,3 +30,29 @@ end
 Well, this is our ruby code. But we should understand Go is not that easy. But it's still easy enough to have fun with! Before writing our version of _FizzBuzz_, we need to learn alternatives in Go. I really didn't want to make another disaster like previous chapter, so I kept if fun and cool in this chapter. Well, let's find out what we need to learn about Go!
 
 ## Before we write the code in Go 
+
+### General code structure 
+
+Remember this : 
+
+```go
+package main
+
+import "fmt"
+
+func main(){
+    fmt.Println("Hello, World")
+}
+``` 
+
+So, what's this? Imagine we have a file called `main.go`. The _pacakge_ keyword here determines the name of the file, and what it does in the whole application. The next thing is `import "fmt"`. If you did code in ruby, you know we use `require` to import a library. This is the same thing. I also think if you're from a python backgorund, you're more familiar, because it's the same keyword in python. `"fmt"` is _formatter_. If you want to print something, you need that. And of course, it does more than printing but for now, we just need the print function. 
+
+The part we said `func main(){}`, we declare _main function_. This _main function_ is inherited from _C_ and _C++_, which were the main inspirations for Go. Of course, we need to mind that the one and only Ken Thompson had a great roll in the creation of Go. So, it means we have to deal with a lot of C inheritance here. 
+
+> Although I've always been a Ruby developer, but I also used to work with AVR microcontrollers and Arduino boards. I am really familiar with _C_ and I highly recommend to learn a bit of _C_. It will make learning programming much easier. 
+
+Fine, when we pretty much know what everything does here, we need to just know what `fmt.Println("Hello World")` does. It simply prints out the input text with a `\n` appended at the ent. 
+
+Please, remember this _general code structure_, because it's what we're using all the time in this book and pretty much our career as a Go programmer!
+
+### Conditions and statements
