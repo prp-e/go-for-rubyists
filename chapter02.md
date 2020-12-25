@@ -25,3 +25,19 @@ rvm use 2.6.5 --default
 Isn't it beautiful? By the way I believe this way of installing a language isn't cool. But do you know why we have to keep using this way - specially when we use ruby - and not get over it? The answer is most of apps we created, Use different versions of ruby and ruby _gems_ (I think gems are more like `npm` by the way.) and we need to test them out with different versions on our own machine, then we have to install _the right version_ on the host machine. Do we need the same thing in Go? not really. Why? You'll find out later in the book yourself :) 
 
 ## Go installation
+
+There are a lot of ways to install Go on your machine. If you're on Windows, [website](http://golang.org) offers an installation file (`msi` or `exe`) which installs everything for you. If you're on macOS, that's the same, but this time the whole thing is just made for _Darwin_ kernel. And if you use Linux, [this](https://golang.org/doc/install) is how you should install the damn thing. Isn't it too easy then? It is. And this is why I kinda like Go, even more than Ruby. 
+
+After installation, just run this : 
+
+```
+go version
+``` 
+
+and you'll have this response : 
+
+```
+go version go1.15.6 darwin/amd64
+``` 
+
+And remember, I use macOS, so that `darwin` thing may differ on your machine. 
