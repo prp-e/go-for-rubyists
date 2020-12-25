@@ -62,3 +62,15 @@ func main() {
 So, this means this language is a bit harder than Ruby. Is it a bad thing? So if you don't know the fact that codes written in Go can be 1500 times faster than ruby, YES! But if you know the fact, No. You spend more time coding, but you spend less time running your codes. And does it mean Ruby is bad? HELL NO! Ruby is awesome, but you know there's something more awesome. 
 
 ## Advantages of using Go
+
+So, I think I told you everything about Go and its advantages, right? But in this section I just list all of them : 
+
+* Modern language, with the strength of _C_ and _C++_. 
+* Supported by Google (I know if you're a _FLOSS_ advocate this will piss you off, but do you know having support from a big corporate means what? ) 
+* Learning resources 
+* Models they introduced in the language for concurrent programming, etc. 
+* Packages! (Fine, I think I'm out of words for this section, because having a package manager is pretty much the definition of a _modern_ language. )
+
+And if you still look for more to know, I highly suggest reading [this](https://builtin.com/software-engineering-perspectives/golang-advantages) article. 
+
+## What's next?
