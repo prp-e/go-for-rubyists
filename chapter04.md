@@ -56,3 +56,44 @@ Fine, when we pretty much know what everything does here, we need to just know w
 Please, remember this _general code structure_, because it's what we're using all the time in this book and pretty much our career as a Go programmer!
 
 ### Conditions and statements
+
+Again, these structures are pretty much similar to _C_. Let's make a simple program that checks three things (I hate this example) : 
+
+1. A is greater than B 
+2. A is equal to B
+3. A is less than B 
+
+This is written like this in Go: 
+
+```go 
+package main
+
+import "fmt"
+
+func main(){
+    a := 10
+    b := 5
+
+    if a > b {
+        fmt.Printf("%d is greater than %d", a, b)
+    } else if a == b {
+        fmt.Printf("%d is equal to %d", a, b)
+    } else {
+        fmt.Printf("%d is less than %d", a, b)
+    }
+}
+``` 
+
+Are we cool now? Let's take a deeper look. First, I used `fmt.Printf` because I'm more familiar with it's structure (remember my hardware programming background?) and of course there are better ways to print out integers. But the focus here is on `if {}` statements. The structure is :
+
+```go
+if CONDITION {
+    STATEMENR
+}
+``` 
+
+and other stuff like `else if` and `else` are pretty much the same. Remember, Go is more like _C_ than Ruby, so it looks (trust me, it just looks like this) a bit more difficult to understand. 
+
+Now only loops remain... 
+
+### Loops
