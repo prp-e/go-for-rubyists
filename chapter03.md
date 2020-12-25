@@ -89,3 +89,5 @@ And this concept applies to hashes and strings as well.
 For functions and classes, we'll have a separate chapter. I prefer to explain functions and classes of Ruby in the chapter we're coding Go. Why? because Ruby is a _mostly object oriented_ language. But Go is not even object oriented. So I need you to feel the difference. 
 
 ## What's next? 
+
+I think after doing a quick flashback to ruby, it's time to write a simple code, which is also a commonly asked programming interview question. In the next chapter, we'll be writing the famous _FizzBuzz_ first in Ruby, then in Go. It's a very very good way to learn a whole new language, specially when you have a background in another language.
