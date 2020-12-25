@@ -21,3 +21,44 @@ Around 2011, Python became trendy here. I know python existed long before. But i
 After a few years, when _Go_ became the trend of the world, most of those companies who used _PHP_, did a refactor to _Go_. Now, a new age has been started. You really _need_ to learn Go when this happens. Why? because Go is a new language. It has a lot of potentials to become the next _PHP_ and this means we'll have a web written in Go in a few years. 
 
 Although what I told you in the previous section, wasn't the whole story and it's not the most accurate story about trends, but it gives you the idea about how trends can be killer, too!
+
+## Go in a first glance 
+
+Although I didn't want to put any code here, but hey, why not? This is how _Hello World_ looks like in Go : 
+
+```go
+package main 
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World")
+}
+``` 
+
+How does it look like? To me, it looks like _C_ or _C++_. And this is one of the reasons I love the language. Let's write a more complex code. Why not using some functions? Fine, I'll write a code that takes width and height of a rectangle and then gives you the area : 
+
+```go
+package main 
+
+import (
+    "fmt"
+    "math"
+)
+
+func rectangle_area(width, height float64) float64 {
+    return width * height
+}
+
+func main() {
+    width := 10 
+    height := 22 
+
+    fmt.Printf("Area is %d\n", rectangle_area(width, height))
+}
+
+``` 
+
+So, this means this language is a bit harder than Ruby. Is it a bad thing? So if you don't know the fact that codes written in Go can be 1500 times faster than ruby, YES! But if you know the fact, No. You spend more time coding, but you spend less time running your codes. And does it mean Ruby is bad? HELL NO! Ruby is awesome, but you know there's something more awesome. 
+
+## Advantages of using Go
