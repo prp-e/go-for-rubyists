@@ -97,3 +97,31 @@ and other stuff like `else if` and `else` are pretty much the same. Remember, Go
 Now only loops remain... 
 
 ### Loops
+
+For some reason, there's only `for` loop in Go. I think it is a wise move. Why? Fine. Let's look at ruby. We have `while` and `for`. These are commonly used structures in Ruby. We also have `until` which is some how like reverse of `while` (and although it looks cool to have something like that, I never could understand it!) and each iterable entity also has `each` method which helps us iterate. Enough. It's too much syntax! Let's just learn one strong enough to destroy a planet. 
+
+`for` loops in Go mostly look like the loops in _C_, but they're a bit more flexible. So here, I'm showing the simplest to the most advanced form. 
+
+```go
+func main(){
+    i := 1
+    for i < 10 {
+        fmt.Println(i)
+        i++
+    }
+}
+```
+
+This is somehow similar to `while`. We also can write the same concept like this (Which looks like _C_ for loops): 
+
+```go
+func main() {
+    for i := 1; i < 10; i++ {
+        fmt.Println(i)
+    }
+}
+```
+
+Now, we almost learned everything we needed, so why not making the whole _FizzBuzz_ thing?! 
+
+## Finally we'll Fizz the Buzz!
