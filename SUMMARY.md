@@ -15,3 +15,8 @@
 * [Chapter 3 : Flashback to Ruby](chapter03.md)
     * [Let's cut our Rubies!](chapter03.md#lets-cut-our-rubies)
     * [What's next?](chapter03.md#whats-next)
+* [Chapter 4 : FizzBuzz](chapter04.md)
+    * [Ruby](chapter04.md#ruby)
+    * [Before we write the code in Go](chapter04.md#before-we-write-the-code-in-go)
+    * [Finally we'll Fizz the Buzz](chapter04.md#finally-well-fizz-the-buzz)
+    * [What's next?](chapter04.md#whats-next)
