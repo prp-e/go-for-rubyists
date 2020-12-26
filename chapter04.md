@@ -125,3 +125,31 @@ func main() {
 Now, we almost learned everything we needed, so why not making the whole _FizzBuzz_ thing?! 
 
 ## Finally we'll Fizz the Buzz!
+
+With the knowledge we have now, we can write _FizzBuzz_ in Go as well! So I created `02_fizzbuzz` project as well and let's open `main.go` file and write these inside the file: 
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    for i:= 1; i < 10; i++ {
+        if i % 15 == 0 {
+            fmt.Println("FizzBuzz")
+        } else if i % 3 == 0 {
+            fmt.Println("Fizz")
+        } else if i % 5 == 0 {
+            fmt.Println("Buzz")
+        } else {
+            println(i)
+        }
+    }
+
+    fmt.Println("Done :)")
+}
+``` 
+
+I hope you enjoyed this coding experience. It's amazing, isn't it? It's all for now :) 
+
+## What's next?
