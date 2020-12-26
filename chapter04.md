@@ -153,3 +153,5 @@ func main() {
 I hope you enjoyed this coding experience. It's amazing, isn't it? It's all for now :) 
 
 ## What's next?
+
+In the next chapter, we'll take a look at functions and how we can write different functions in Go and we'll do a comparison with Ruby. For now, I think you've learned pretty much everything an _intermediate_ Go programmer must know. 
