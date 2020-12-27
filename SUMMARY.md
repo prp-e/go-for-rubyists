@@ -20,3 +20,8 @@
     * [Before we write the code in Go](chapter04.md#before-we-write-the-code-in-go)
     * [Finally we'll Fizz the Buzz](chapter04.md#finally-well-fizz-the-buzz)
     * [What's next?](chapter04.md#whats-next)
+* [Chapter 5 : Functions](chapter05.md)
+    * [A simple function : Area of a rectangle](chapter05.md#a-simple-function-area-of-a-rectangle)
+    * [Data Types in Go](chapter05.md#data-types-in-go)
+    * [Factorial Function](chapter05.md#factorial-function)
+    * []
