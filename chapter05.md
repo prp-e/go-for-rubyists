@@ -55,3 +55,45 @@ I think we all know how it works, so we just need to move forward and write the 
 We all know even in languages like Python, Ruby, PHP and pretty much every scripting language, we have _data types_. The simple way to find out the type of data is using methods provided. For example in Python, if we define `a = 2` and then run `type(a)`, we'll find it's an integer, although we don't tell the interpreter we have an integer. In Ruby we just run `a.class` and so on. 
 
 In Go, although we can declare variables without type as easy as typing `a := 5` we still need to define types. As these types are literally a lot, I highly suggest taking a look at [this](https://golangbyexample.com/all-data-types-in-golang-with-examples/) link. We'll need this link in future, specially when we try to do web stuff using Go!
+
+## Factorial function
+
+Remember the scene from the movie Doctor Strange, when he returned over and over to kick Dormammu's ass? We're going to do the same thing here. But remember that recursive functions are not usually the wisest choice you can make. They easily can ruin your memory. I included this one here, because I like the factorial function. It's simple and it still can show us the whole concept of recursive functions. 
+
+A recursive function, is a function that calls itself. One of the most famous recursive functions is _Fibonacci_. And it's up to you to learn and code that function in Ruby and Go. Here, we're just going to write codes for Factorial. 
+
+Factorial algorithm is very easy. We assume 0 and 1 both have the factorial of 1. You know when you multiply something to 1, result is pretty much the same. So 1 has no effects on the results. Now, we have the algorithm : 
+
+```
+n! = n * factorial(n-1)
+``` 
+
+This cycle continues until we reach 1 or 0 (depending on how you code the algorithm) and the final number, is the `n!` we've been looking for. 
+
+The code in Ruby is :
+
+```ruby
+def factorial(n)
+    if n == 0
+        return 1
+    else
+        return n * factorial(n)
+    end
+end
+```
+
+It's simple and it works. Now, it's time to write the whole thing in Go. This time, I only write the function. Printing and other stuff is up to you. 
+
+```go
+func factorial(n int) int {
+    if n == 0 {
+        return 1
+    } else {
+        return n * factorial(n -1)
+    }
+}
+```
+
+It got much simpler when you keep practicing coding in Go. Functions are very important here, because we're dealing with a language which is not _object oriented_ and it's mostly functional. In the future, we'll learn how these functions can be usueful to us. 
+
+## What's next? 
