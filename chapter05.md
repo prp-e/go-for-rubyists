@@ -49,3 +49,9 @@ func main() {
 ```
 
 I think we all know how it works, so we just need to move forward and write the second function. But before that, we need to learn something. 
+
+## Data Types in Go
+
+We all know even in languages like Python, Ruby, PHP and pretty much every scripting language, we have _data types_. The simple way to find out the type of data is using methods provided. For example in Python, if we define `a = 2` and then run `type(a)`, we'll find it's an integer, although we don't tell the interpreter we have an integer. In Ruby we just run `a.class` and so on. 
+
+In Go, although we can declare variables without type as easy as typing `a := 5` we still need to define types. As these types are literally a lot, I highly suggest taking a look at [this](https://golangbyexample.com/all-data-types-in-golang-with-examples/) link. We'll need this link in future, specially when we try to do web stuff using Go!
