@@ -97,3 +97,7 @@ func factorial(n int) int {
 It got much simpler when you keep practicing coding in Go. Functions are very important here, because we're dealing with a language which is not _object oriented_ and it's mostly functional. In the future, we'll learn how these functions can be usueful to us. 
 
 ## What's next? 
+
+To be honest, it took more than three hours of thinking to find out what should I write here. Go is a very big language (in terms of features, frameworks, community, etc.) and we covered most of it in these five chapters. I am almost out of content for the rest of the book. 
+
+Do not worry, in the next chapter, we'll take a look at `slice` and `map` data structures in Go. Why? I think most used structures in Ruby are arrays and hash tables. So, why not learning the equivalent in Go? Stay tuned for the next chapter. In the mean time, go ahead and write code for different algorithms with the knowledge you have. 
