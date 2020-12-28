@@ -24,4 +24,4 @@
     * [A simple function : Area of a rectangle](chapter05.md#a-simple-function-area-of-a-rectangle)
     * [Data Types in Go](chapter05.md#data-types-in-go)
     * [Factorial Function](chapter05.md#factorial-function)
-    * []
+    * [What's next?](chapter05.md#whats-next)
