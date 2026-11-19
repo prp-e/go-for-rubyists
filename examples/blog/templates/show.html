@@ -1,0 +1,14 @@
+{{define "show"}}
+{{template "head" .}}
+<article>
+  <h1>{{.Post.Title}}</h1>
+  <div class="post-body">{{.Post.Body}}</div>
+</article>
+<div class="actions">
+  <a href="/posts/{{.Post.ID}}/edit">Edit post</a>
+  <form method="post" action="/posts/{{.Post.ID}}/delete">
+    <button class="danger" type="submit">Delete post</button>
+  </form>
+</div>
+{{template "foot" .}}
+{{end}}

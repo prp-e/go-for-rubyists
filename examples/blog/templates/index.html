@@ -1,0 +1,12 @@
+{{define "index"}}
+{{template "head" .}}
+<h1>Posts</h1>
+{{if .Posts}}
+<ul>
+  {{range .Posts}}<li><a href="/posts/{{.ID}}">{{.Title}}</a></li>{{end}}
+</ul>
+{{else}}
+<p>No posts yet. <a href="/posts/new">Write your first post.</a></p>
+{{end}}
+{{template "foot" .}}
+{{end}}
