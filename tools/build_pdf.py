@@ -129,7 +129,7 @@ def decorate(canvas, doc):
         canvas.drawString(SIDE - 2, 473, "Go for")
         canvas.drawString(SIDE - 2, 417, "Rubyists")
         canvas.setFont("Times-Roman", 15)
-        canvas.drawString(SIDE, 366, "From your first Go program to a tested HTTP API")
+        canvas.drawString(SIDE, 366, "From your first Go program to a SQLite blog")
         canvas.setFont("Helvetica", 12)
         canvas.drawString(SIDE, 318, "Muhammadreza Haghiri")
         return
