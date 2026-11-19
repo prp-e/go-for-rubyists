@@ -4,7 +4,7 @@ Remember how little ceremony it took to write a route in Sinatra? I wanted to ke
 
 ## Start with one route
 
-Create an empty directory and run `go mod init example.com/chi-demo`, then `go get github.com/go-chi/chi/v5@v5.5.0`. Save this as `main.go`. When you're done, run `go run .` and visit `http://127.0.0.1:8081/hello/Ruby`.
+With Go 1.26 or newer, create an empty directory and run `go mod init example.com/chi-demo`, then `go get github.com/go-chi/chi/v5@v5.5.0`. Save this as `main.go`. When you're done, run `go run .` and visit `http://127.0.0.1:8081/hello/Ruby`.
 
 ```go
 package main

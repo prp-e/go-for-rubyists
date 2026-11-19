@@ -14,5 +14,6 @@
 - [11. A reading list that can take a request](book/11-capstone.md)
 - [12. Shipping and maintaining a Go service](book/12-shipping.md)
 - [13. From Sinatra to Chi](book/13-chi.md)
+- [14. Build a blog with Chi and SQLite](book/14-blog.md)
 - [Appendix A. Exercise notes](book/13-exercises.md)
 - [Appendix B. Ruby-to-Go reference](book/14-reference.md)

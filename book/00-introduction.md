@@ -4,7 +4,7 @@ In 2012, I went looking for an argument on a Linux forum. You know the kind. Som
 
 Ruby led me to Sinatra and Rails and gave me a reason to care about backend programming. Years later I watched someone build a little container from scratch in Go. I wanted to understand what happened between running a command and getting a process that thought it had the machine to itself. I usually learn these things by building a small version and finding out where I was wrong. This book uses the same trick.
 
-We'll take things we already know how to do in Ruby and write them again in Go. A Ruby array will get us to a slice, and then the slice will do something the array never warned us about. We'll use a Sinatra route to understand a Go HTTP handler, and work our way up to a service with tests, request limits, cancellation, and graceful shutdown. If you're here from Python or JavaScript, the Ruby examples are small enough to read as you go.
+We'll take things we already know how to do in Ruby and write them again in Go. A Ruby array will get us to a slice, and then the slice will do something the array never warned us about. We'll use a Sinatra route to understand a Go HTTP handler, and work our way up to a service with tests, request limits, cancellation, and graceful shutdown. Then we'll build a blog you can open in a browser, with Chi for routes and SQLite for posts. If you're here from Python or JavaScript, the Ruby examples are small enough to read as you go.
 
 ## How to read this book
 

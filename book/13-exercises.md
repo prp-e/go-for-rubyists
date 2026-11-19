@@ -31,3 +31,10 @@ For the database, use `ORDER BY id` for the list. Mark-read and activity inserti
 For filtering, check whether the query parameter is present before parsing it. If you accept only the strings true and false, avoid accidentally accepting more spellings. Filter an existing snapshot in one pass to preserve its order. Include tests for no filter, false, true, and invalid text.
 
 For deployment, the signal context indicates that the process should stop serving. The fresh shutdown context gives in-flight requests a bounded amount of time to finish. Using the canceled signal context for both makes the shutdown budget expire immediately.
+
+
+## 13–14. Test the web app through the router
+
+For the health route, call `w.WriteHeader(http.StatusNoContent)` without writing a body. Build an `httptest` request for GET, then one for POST. Use the actual Chi router so the test exercises method matching.
+
+For blog search with literal matching, try SQLite's `instr(title, ?) > 0` with the search string as the bound argument. It treats percent and underscore as text. Decide how an empty query should behave and test the empty result, multiple matches, and a title containing a literal percent.
