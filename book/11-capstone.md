@@ -34,7 +34,18 @@ Try posting a blank title and fetching ID 999. The first should give 400 and the
 
 Start in `internal/readinglist/http.go`. The POST route calls `createBook`. The media type check happens before decoding so a client knows how to correct an unsupported request. The first decode answers whether the body begins with an object we can use. The second decode answers whether that's the whole body. If you remove the second decode and post two objects in a row, the first object can still be accepted. Try it in the test before putting the check back.
 
-Next follow `store.Add`. It trims the title and counts code points before acquiring the lock. This work depends only on the input, so there's no reason to hold the lock through it. Inside the lock, constructing the Book and appending it form one operation. The caller receives a value copy. Read back `store.List` and look for the same ownership choice in its return value.
+Next follow `store.Add`. Here's the part that assigns the ID and publishes the record, after validation:
+
+```go
+s.mu.Lock()
+defer s.mu.Unlock()
+
+book := Book{ID: int64(len(s.books)) + 1, Title: title}
+s.books = append(s.books, book)
+return book, nil
+```
+
+The method trims the title and counts code points before acquiring the lock. This work depends only on the input, so there's no reason to hold the lock through it. Inside the lock, constructing the Book and appending it form one operation. The caller receives a value copy. Read back `store.List` and look for the same ownership choice in its return value.
 
 Finally the handler writes Location before its 201 status, and the encoder writes the book. If a client disconnects after the append, the book still exists even if the client never gets a response. Retrying a POST can therefore create a duplicate. A production API that promises safe retries needs a contract such as a client-supplied idempotency key and storage that protects that promise across concurrent requests and restarts. Notice how the question began in HTTP and ended back at the storage layer.
 
@@ -49,3 +60,5 @@ Keep your existing HTTP tests and add integration tests for the new implementati
 The HTTP tests drive the routes without an external listener. They check the creation status and Location, lookup, repeated marking, an empty collection, and invalid requests, including oversized bodies. The store tests call it concurrently to exercise ID assignment and snapshot isolation. A lock around the ID increment alone would still leave the slice exposed. In our store the lock covers the whole append and publishes a complete record.
 
 **Try it.** Add a `GET /books?read=true` filter. Specify the behavior for an invalid boolean and verify that filtering doesn't rearrange the list. Consider what changes if you implement pagination and allow deletion.
+
+The complete [server command](https://github.com/prp-e/go-for-rubyists/blob/book-rewrite/examples/cmd/readinglist/main.go), [HTTP handlers](https://github.com/prp-e/go-for-rubyists/blob/book-rewrite/examples/internal/readinglist/http.go), [store](https://github.com/prp-e/go-for-rubyists/blob/book-rewrite/examples/internal/readinglist/store.go), and [tests](https://github.com/prp-e/go-for-rubyists/blob/book-rewrite/examples/internal/readinglist/readinglist_test.go) are available together in the companion code.

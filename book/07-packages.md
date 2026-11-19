@@ -16,7 +16,7 @@ examples/
 
 `cmd` is a convention. `internal` has an enforced import restriction. Here it keeps the implementation inside the examples tree. Give packages a short name that makes sense at the call site. `readinglist.NewStore()` says more than `utils.New()`. Avoid cycles. If two packages repeatedly need each other's types, consider keeping those types together or making the consumer declare a narrower interface.
 
-Use `go get module/path@version` to add or update a dependency deliberately. `go mod tidy` reconciles the dependency files with imports, including tests. Tagged major versions starting at v2 ordinarily have a major version suffix in the module path. Go's minimal version selection picks the highest required version for each module path from the graph. Read the diff after an upgrade. `go list -m all` shows selected versions and `go mod why -m module/path` helps explain a dependency's presence.
+Use `go get module/path@version` to select a dependency and `go mod tidy` to reconcile imports, including tests. Starting at v2, tagged module paths ordinarily include the major version. Go picks the highest required version for each module path from the dependency graph. Review the diff after an upgrade. `go list -m all` shows selected versions.
 
 ## A test is an ordinary Go file with a special name
 
@@ -49,6 +49,6 @@ Run `go test ./...` for all packages in the module, `go test -run TestLabel ./cm
 
 Suppose someone says that an empty catalog returns `null` and their client expects a JSON array. Write the smallest test that fails for that report. Compare the returned JSON, or decode it into a slice and check that it is non-nil and empty. Changing the snapshot to use `make([]Book, 0)` fixes the contract at the source. With the test in place, the next person who writes `var snapshot []Book` will learn why that little allocation exists.
 
-When a helper or fixture appears in more than one test, ask whether the cases are still readable at the call site. A helper that calls `t.Helper()` makes failure locations point to its caller. A test using `t.Parallel()` must avoid changing process-wide state and must manage any resources shared with sibling tests. Try running a suspicious package with `go test -count=20 ./internal/readinglist`. A failure that occurs only in a particular order is often telling you something about global state or cleanup.
+Use `t.Helper()` so failures point to the caller. When tests depend on order, try `go test -shuffle=on -count=20` and look for shared state.
 
 **Try it.** Add cases for 1, 5, and 30. Put a deliberate bug in the switch and make sure the test catches it. Restore the switch before continuing.
