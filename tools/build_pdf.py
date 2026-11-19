@@ -13,6 +13,7 @@ from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
     KeepTogether,
+    NextPageTemplate,
     PageBreak,
     PageTemplate,
     Paragraph,
@@ -162,13 +163,22 @@ def build(output):
         subject="A practical guide to Go for Ruby programmers",
     )
     frame = Frame(SIDE, 57, WIDTH - 2 * SIDE, HEIGHT - 94, leftPadding=0, rightPadding=0)
-    doc.addPageTemplates(PageTemplate("Book", [frame], onPage=decorate))
+    doc.addPageTemplates([
+        PageTemplate("Book", [frame], onPage=decorate),
+        PageTemplate("Blank", [frame]),
+    ])
     toc = TableOfContents()
     toc.levelStyles = [CONTENTS]
     toc.dotsMinLevel = 0
     story = [Spacer(1, 1), PageBreak(), Paragraph("Contents", CHAPTER), toc]
     for path in paths:
-        story.extend([PageBreak(), *chapter(ROOT / path)])
+        contents = chapter(ROOT / path)
+        story.extend([PageBreak(), *contents])
+        if re.match(r"^\d+\. ", contents[0].getPlainText()):
+            story.extend([
+                NextPageTemplate("Blank"), PageBreak(),
+                Spacer(1, 1), NextPageTemplate("Book"),
+            ])
     doc.multiBuild(story)
 
 
