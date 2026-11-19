@@ -1,0 +1,13 @@
+{{define "form"}}
+{{template "head" .}}
+<h1>{{.Title}}</h1>
+{{if .Message}}<p role="alert">{{.Message}}</p>{{end}}
+<form method="post" action="{{.Action}}">
+  <label for="title">Title</label>
+  <input id="title" name="title" value="{{.Post.Title}}" required>
+  <label for="body">Body</label>
+  <textarea id="body" name="body" rows="12" required>{{.Post.Body}}</textarea>
+  <button type="submit">Save post</button>
+</form>
+{{template "foot" .}}
+{{end}}
