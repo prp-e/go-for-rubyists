@@ -30,6 +30,20 @@ curl -i -X PUT http://127.0.0.1:8080/books/1/read
 
 Try posting a blank title and fetching ID 999. The first should give 400 and the second should give 404. Create two books and check the list order. Press Ctrl+C in the server terminal. The command stops accepting new connections and waits up to five seconds for active requests. It uses a fresh context for shutdown because the signal context has already been canceled.
 
+## Follow one POST through the code
+
+Start in `internal/readinglist/http.go`. The POST route calls `createBook`. The media type check happens before decoding so a client knows how to correct an unsupported request. The first decode answers whether the body begins with an object we can use. The second decode answers whether that's the whole body. If you remove the second decode and post two objects in a row, the first object can still be accepted. Try it in the test before putting the check back.
+
+Next follow `store.Add`. It trims the title and counts code points before acquiring the lock. This work depends only on the input, so there's no reason to hold the lock through it. Inside the lock, constructing the Book and appending it form one operation. The caller receives a value copy. Read back `store.List` and look for the same ownership choice in its return value.
+
+Finally the handler writes Location before its 201 status, and the encoder writes the book. If a client disconnects after the append, the book still exists even if the client never gets a response. Retrying a POST can therefore create a duplicate. A production API that promises safe retries needs a contract such as a client-supplied idempotency key and storage that protects that promise across concurrent requests and restarts. Notice how the question began in HTTP and ended back at the storage layer.
+
+## What would change with persistence?
+
+Start by writing down the operations the handler really needs before introducing an interface. For this service that's add, list, find, and mark read. An SQL version has additional expected failures, so a signature returning only a record and a boolean would hide information. Give the operation a context and a way to surface a storage error. Use a missing-record error for a 404 and treat a database failure as a server error. Keep internal database details in logs.
+
+Keep your existing HTTP tests and add integration tests for the new implementation. Check creation order, simultaneous inserts, and what happens when an operation fails halfway through. If you change the contract, change its tests deliberately. It is perfectly reasonable to leave the memory version in the book as a little program you can run on a train.
+
 ## Give the bad paths tests of their own
 
 The HTTP tests drive the routes without an external listener. They check the creation status and Location, lookup, repeated marking, an empty collection, and invalid requests, including oversized bodies. The store tests call it concurrently to exercise ID assignment and snapshot isolation. A lock around the ID increment alone would still leave the slice exposed. In our store the lock covers the whole append and publishes a complete record.

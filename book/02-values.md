@@ -59,4 +59,18 @@ if n, err := strconv.Atoi(input); err == nil && n > 0 {
 
 Both variables are local to that `if` and its `else`, if it has one. Short-circuiting means the right side of `&&` is evaluated only if the left side is true. Later we'll handle the parse error separately so the caller can tell the difference between malformed text and a valid number outside the allowed range.
 
+## Constants, named types, and the cost of a conversion
+
+`const secondsPerMinute = 60` is an untyped constant. It can be used where an `int` or a `float64` is needed, provided the value is representable in the destination type. Once you write `seconds := secondsPerMinute`, the local has the inferred type `int`. The constant is more flexible than the variable. A constant can depend on another constant and cannot depend on something computed at runtime.
+
+```go
+type BookID int64
+type UserID int64
+
+var book BookID = 12
+var user UserID = 12
+```
+
+The two variables have the same underlying representation and different types. Comparing or assigning one to the other requires an explicit conversion. That moment gives you a chance to ask why a user ID was about to get passed to the book lookup. A type alias, written with an equals sign, gives an existing type another spelling. It doesn't create a distinct type. For a small application a plain integer is often enough. The named type becomes valuable when two values have similar representations and very different jobs.
+
 **Try it.** Turn FizzBuzz into a command that accepts a positive upper bound and prints usage when it receives invalid input. Test 0, 1, 15, 100, and a string.

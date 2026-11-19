@@ -9,7 +9,9 @@ A `*sql.DB` represents a pool suitable for concurrent use. Create it at startup,
 Here's a read using PostgreSQL placeholder syntax. The query text keeps the input separate from the SQL.
 
 ```go
-func findBook(ctx context.Context, db *sql.DB, id int64) (Book, error) {
+func findBook(
+    ctx context.Context, db *sql.DB, id int64,
+) (Book, error) {
     var b Book
     err := db.QueryRowContext(ctx,
         "SELECT id, title, read FROM books WHERE id = $1", id,

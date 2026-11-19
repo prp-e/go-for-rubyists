@@ -45,4 +45,10 @@ Put the test in the same package to reach unexported functions. Use a package wi
 
 Run `go test ./...` for all packages in the module, `go test -run TestLabel ./cmd/fizzbuzz` for one test, and `go test -race ./...` to detect races on exercised paths. `go test -cover ./...` reports which statements ran. Ask whether you checked failure modes as well as happy paths. Coverage can tell you that execution visited a line while the assertion missed the bug entirely.
 
+## Turn a bug report into a regression test
+
+Suppose someone says that an empty catalog returns `null` and their client expects a JSON array. Write the smallest test that fails for that report. Compare the returned JSON, or decode it into a slice and check that it is non-nil and empty. Changing the snapshot to use `make([]Book, 0)` fixes the contract at the source. With the test in place, the next person who writes `var snapshot []Book` will learn why that little allocation exists.
+
+When a helper or fixture appears in more than one test, ask whether the cases are still readable at the call site. A helper that calls `t.Helper()` makes failure locations point to its caller. A test using `t.Parallel()` must avoid changing process-wide state and must manage any resources shared with sibling tests. Try running a suspicious package with `go test -count=20 ./internal/readinglist`. A failure that occurs only in a particular order is often telling you something about global state or cleanup.
+
 **Try it.** Add cases for 1, 5, and 30. Put a deliberate bug in the switch and make sure the test catches it. Restore the switch before continuing.

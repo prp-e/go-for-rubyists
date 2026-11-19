@@ -44,4 +44,12 @@ If multiple cases are ready, a select may choose any of them. For a worker pool,
 
 In Go modules using language version 1.22 or later, loop variables declared by the loop have per-iteration scope. An existing outer variable assigned by the loop is still shared. Check what the closure actually references, especially when maintaining older modules.
 
+## Keep the lock around the invariant
+
+Imagine the server computes the next book ID, unlocks, and then locks again to append. Two requests can compute the same ID before either appends. Every access to the slice could individually use a lock and the algorithm would still be wrong. Protect the calculation and the append together. This kind of bug is one reason the race detector is a tool for a narrower question than “is the operation correct?”
+
+Once you have a lock, keep its lifetime short. Make a snapshot before encoding JSON so a slow client doesn't hold up writes. Avoid locking around an external request if you can capture the state you need and validate it afterward. If you must take two locks, give every path the same acquisition order. Copying a used lock is unsafe, which is why the store has pointer receivers and the server shares a single pointer.
+
+Before adding parallelism to a loop, ask what you'd expect to improve. Two workers can help when two slow operations can overlap. Two workers taking turns on a single shared mutex may earn you a much more interesting benchmark and a worse program.
+
 **Try it.** Add a context to the parallel example. Cancel it while jobs are outstanding. Stop sending, close jobs, and wait before returning. Decide whether to return partial results and test that contract with the race detector.

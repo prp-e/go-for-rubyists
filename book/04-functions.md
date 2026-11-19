@@ -9,7 +9,7 @@ func rectangleArea(width, height float64) (float64, error) {
     }
     area := width * height
     if math.IsInf(area, 0) || area == 0 {
-        return 0, fmt.Errorf("area is outside the representable range")
+        return 0, fmt.Errorf("area is out of range")
     }
     return area, nil
 }
@@ -39,5 +39,22 @@ For a small file `os.ReadFile` is convenient. For a large input, open it and pro
 The command in `examples/cmd/linecount` uses `bufio.Scanner` and checks `scanner.Err()` after the loop. Scanner has a token size limit. This example sets a larger ceiling and still rejects an oversized line rather than reporting a partial count as success. For arbitrary-length records, use a buffered reader and set limits that suit the format.
 
 `panic` unwinds the goroutine and runs deferred calls. An unrecovered panic ends the program. `recover` only stops the panic when called directly by an appropriate deferred function in that goroutine. It's useful at a narrow boundary with a deliberate policy. A missing file is still a normal error.
+
+## Reader and Writer are more useful than a filename
+
+If a function accepts a filename, it decides what the input is and how long it stays open. If it accepts an `io.Reader`, the caller can pass a file, standard input, an HTTP body, or `strings.NewReader` in a test. You can put the parsing loop in a function that accepts a reader and let the command own the file. In Ruby terms this is the part where `StringIO` stops being a trick and starts saving you from creating a directory of test files.
+
+When calling `Read` directly, use the bytes it returned before handling the error. An implementation can return both data and EOF in the same call. Prefer a library that already handles the loop, such as `io.Copy`, when its behavior is what you need. For untrusted or unbounded input, set a limit where the bytes enter your application.
+
+```go
+func copyReport(dst io.Writer, src io.Reader) error {
+    if _, err := io.Copy(dst, src); err != nil {
+        return fmt.Errorf("copy report: %w", err)
+    }
+    return nil
+}
+```
+
+The caller still owns both streams. If someone passes a buffered writer, it is that caller's job to flush it and check the flush error. Giving each resource a clear owner makes it easier to see which one wasn't closed when a command runs out of file descriptors.
 
 **Try it.** Count only nonempty lines. Run the command on a nonexistent filename and on a file with one very long line. Make sure both failures are reported.

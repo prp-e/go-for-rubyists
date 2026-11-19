@@ -24,7 +24,9 @@ An interface value can hold a concrete type and a nil pointer at the same time. 
 An interface value lets a function call behaviors. A type parameter lets you reuse an implementation across types and retain their static types. Here's a helper for getting a value from a map when a missing entry has a meaningful default:
 
 ```go
-func getOr[K comparable, V any](m map[K]V, key K, fallback V) V {
+func getOr[K comparable, V any](
+    m map[K]V, key K, fallback V,
+) V {
     if value, ok := m[key]; ok {
         return value
     }
